@@ -5,20 +5,16 @@ import './products_manager.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-        accentColor: Colors.deepPurple
-      ),
+          primarySwatch: Colors.deepOrange, accentColor: Colors.deepPurple),
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Eustero List'),
-          ),
-          body: ProductManager('Food Tester'),
+        appBar: AppBar(
+          title: Text('Eustero List'),
+        ),
+        body: ProductManager(startingProduct: 'Food Tester'),
       ),
     );
   }

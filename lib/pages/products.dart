@@ -11,11 +11,6 @@ class ProductsPage extends StatelessWidget {
   ProductsPage(this.products);
 
 
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

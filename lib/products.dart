@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Products extends StatelessWidget {
@@ -15,6 +16,7 @@ class Products extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(top: 10.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
                   products[index]['title'],
@@ -23,10 +25,28 @@ class Products extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Oswald'),
                 ),
-                Text(products[index]['price'].toString())
+                SizedBox(
+                  width: 8.0,
+                ),
+                Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).accentColor,
+                        borderRadius: BorderRadius.circular(5.0)),
+                    child: Text(
+                      '\$${products[index]['price'].toString()}',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             ),
           ),
+          Container(
+              padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 5.0),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.circular(4.0)),
+              child: Text('Monte Carlo, Monaco')),
           ButtonBar(
             alignment: MainAxisAlignment.center,
             children: <Widget>[

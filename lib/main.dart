@@ -6,8 +6,9 @@ import './pages/products_admin.dart';
 import './pages/products.dart';
 import './pages/product.dart';
 import 'package:scoped_model/scoped_model.dart';
-import './scoped-models/products.dart';
+import './scoped-models/main.dart';
 import './models/product.dart';
+
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -28,8 +29,9 @@ class _MyAppState extends State<MyApp> {
 
   @override 
   Widget build(BuildContext context) {
-    return ScopedModel<ProductsModel>(
-      model: ProductsModel(),
+    final MainModel model = MainModel();
+    return ScopedModel<MainModel>(
+      model: model,
       child: MaterialApp(
       // debugShowMaterialGrid: true,
       theme: ThemeData(
@@ -40,9 +42,9 @@ class _MyAppState extends State<MyApp> {
       // home: AuthPage(),
       routes: {
         '/': (BuildContext context) => AuthPage(),
-        '/products': (BuildContext context) => ProductsPage(),
+        '/products': (BuildContext context) => ProductsPage(model),
         '/admin': (BuildContext context) =>
-            ProductsAdminPage(),
+            ProductsAdminPage(model),
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');
@@ -50,16 +52,19 @@ class _MyAppState extends State<MyApp> {
           return null;
         }
         if (pathElements[1] == 'product') {
-          final int index = int.parse(pathElements[2]);
+          final String productId = pathElements[2];
+          final Product product = model.allProducts.firstWhere((Product product){
+            return product.id == productId;
+          });
           return MaterialPageRoute<bool>(
-            builder: (BuildContext context) => ProductPage(index),
+            builder: (BuildContext context) => ProductPage(product),
           );
         }
         return null;
       },
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute(
-            builder: (BuildContext context) => ProductsPage());
+            builder: (BuildContext context) => ProductsPage(model));
       },
     ),);
   }

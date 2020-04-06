@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:eustace/widgets/products/ui_elements.dart';
+import 'package:eustace/widgets/ui_elements/title_default.dart';
 import 'package:flutter/material.dart';
 
 import 'package:scoped_model/scoped_model.dart';

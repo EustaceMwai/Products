@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './price_tag.dart';
-import '../products/ui_elements.dart';
+import '../ui_elements/title_default.dart';
 import './address_tag.dart';
 import '../../models/product.dart';
 import 'package:scoped_model/scoped_model.dart';
